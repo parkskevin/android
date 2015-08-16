@@ -1,4 +1,6 @@
-package com.kparks.stormy;
+package com.kparks.stormy.weather;
+
+import com.kparks.stormy.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -7,7 +9,7 @@ import java.util.TimeZone;
 /**
  * Created by Kevin Parks on 8/6/2015.
  */
-public class CurrentWeather {
+public class Current {
     private String mIcon;
     private String mTimeZone;
     private long mTime;
@@ -32,8 +34,8 @@ public class CurrentWeather {
         mTime = time;
     }
 
-    public double getTemperature() {
-        return mTemperature;
+    public int getTemperature() {
+        return (int)Math.round(mTemperature);
     }
 
     public void setTemperature(double temperature) {
@@ -48,8 +50,8 @@ public class CurrentWeather {
         mHumidity = humidity;
     }
 
-    public double getPrecipChance() {
-        return mPrecipChance;
+    public int getPrecipChance() {
+        return (int)Math.round(mPrecipChance * 100);
     }
 
     public void setPrecipChance(double precipChance) {
