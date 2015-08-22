@@ -7,6 +7,6 @@
         android:endColor="#141F1F"
         android:angle="270"
         android:type="radial"
-        android:gradientRadius="500"/>
+        android:gradientRadius="@dimen/radius"/>
 
 </shape>

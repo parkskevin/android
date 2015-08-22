@@ -49,13 +49,22 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
 
     public static final String TAG = MainActivity.class.getSimpleName();
+    public static final String DAILY_FORECAST = "DAILY_FORECAST";
+    public static final String CITY_NAME = "CITY_NAME";
+    public static final String HOURLY_FORECAST = "HOURLY_FORECAST";
     public static final long UPDATE_INTERVAL_IN_MILLISECONDS = 30000;
     public static final long FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS =
             UPDATE_INTERVAL_IN_MILLISECONDS / 2;
 
+
     private String apiKey = "db25cce3262458e32f3f7bc5cf1a9ad2";
     private double mLat = 45.2661; //defaults
     private double mLong = -122.6906; //defaults
+
+    public String getCityName() {
+        return mCityName;
+    }
+
     private String mCityName; //locality String
     private Forecast mForecast;
     private GoogleApiClient mGoogleApiClient; //for location updates
@@ -406,6 +415,19 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     @OnClick (R.id.dailyButton)
     public void startDailyActivity(View view) {
         Intent intent = new Intent(this, DailyForecastActivity.class);
+        intent.putExtra(DAILY_FORECAST, mForecast.getDailyForecast());
+        intent.putExtra(CITY_NAME, getCityName());
+        startActivity(intent);
+    }
+
+    /*
+    Butterknife creates the onClickListener in onCreate that points to this function
+ */
+    @OnClick (R.id.hourlyButton)
+    public void startHourlyActivity(View view) {
+        Intent intent = new Intent(this, HourlyForecastActivity.class);
+        intent.putExtra(HOURLY_FORECAST, mForecast.getHourlyForecast());
+        intent.putExtra(CITY_NAME, getCityName());
         startActivity(intent);
     }
 }
