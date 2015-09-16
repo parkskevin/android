@@ -26,6 +26,8 @@ dependencies {
     compile files('libs/commons-io-2.4.jar')
     compile fileTree(include: 'Parse-*.jar', dir: 'libs')
     compile files('libs/Parse-1.10.1.jar')
+    compile files('/home/kevin/workspace/android/Ribbit/libs/Parse-1.10.1.jar')
+    compile files('/home/kevin/workspace/android/Ribbit/libs/commons-io-2.4.jar')
 }
 
 //configurations {
